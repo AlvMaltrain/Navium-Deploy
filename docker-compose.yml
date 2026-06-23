@@ -1,5 +1,5 @@
 # Despliegue Sucursal: BFF + Agendamiento + Notificaciones
-# Las imágenes se bajan de DockerHub
+# Imagenes de dockerhub
 
 services:
   # ─── microservicios ───────────────────────────────────────────────
@@ -7,14 +7,15 @@ services:
     image: chorogollum/navium-agendamiento:latest
     container_name: agendamiento
     restart: unless-stopped
-    # Sin puerto expuesto, lo llama el BFF, por red interna del compose
+    ports:
+      - "8081:8081"
 
   notificaciones:
     image: chorogollum/navium-notificaciones:latest
     container_name: notificaciones
     restart: unless-stopped
 
-  # ───BFF (punto de entrada de los fronts) ──────────────────────────
+  # ───BFF (punto de entrada) ──────────────────────────
   bff:
     image: chorogollum/navium-bff-sucursal:latest
     container_name: bff-sucursal
