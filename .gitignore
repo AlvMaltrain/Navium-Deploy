@@ -1,0 +1,3 @@
+# Variables de entorno locales (por si más adelante mueves las IPs/secretos aquí)
+.env
+.env.*
